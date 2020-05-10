@@ -1,32 +1,25 @@
 class EllysPalMulDiv2:
     MAX_Y = 1000
 
-    def isPalindrome(self, target):
+    @staticmethod
+    def is_palindrome(target):
         target_string = str(target)
-        reverse_string = target_string[::-1]
-        reverse = int(reverse_string)
-
-        if target == reverse:
-            judge = True
-        else:
-            judge = False
-
-        return judge
+        reverse = int(target_string[::-1])
+        return True if target == reverse else False
 
     def getMin(self, X):
-        foundPalindrome = False
+        found_palindrome = False
 
-        # 1 <= y <= 1000
-        for y in range(1, self.MAX_Y + 1):
+        for y in range(1, self.MAX_Y + 1):  # 1 <= y <= 1000
             x_product_y = X * y
-            if self.isPalindrome(x_product_y):
-                foundPalindrome = True
+            if self.is_palindrome(x_product_y):
+                found_palindrome = True
                 break
-
-        if not foundPalindrome:
+        if not found_palindrome:
             y = -1
 
         return y
+
 
 ins = EllysPalMulDiv2()
 assert ins.getMin(42) == 6, "ERROR when x=42, should return 6"
